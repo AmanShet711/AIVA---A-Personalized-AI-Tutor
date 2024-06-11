@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .footer {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .container {
+            max-width: 600px;
+            margin: 120px auto 50px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+        form {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome, {{ student_name }}</h1>
+    </div>
+
+    <div class="container">
+        {% if question %}
+            <h2>Question: {{ question }}</h2>
+        {% endif %}
+        {% if answer %}
+            <h2>Answer: {{ answer }}</h2>
+        {% endif %}
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <form action="{{ url_for('dashboard', student_name=student_name) }}" method="post">
+            <label for="subject">Select Subject:</label>
+            <select name="subject" id="subject">
+                <option value="Science">Science</option>
+                <option value="Social">Social</option>
+                <!-- Add other subjects as needed -->
+            </select>
+            <label for="question">Ask a Question:</label>
+            <input type="text" id="question" name="question" required>
+            <button type="submit">Get Answer</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>&copy; Final Year Project / BNMIT,Bengaluru.</p>
+    </div>
+</body>
+</html>

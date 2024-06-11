@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            background-image: url("./images/bg-image.jpg");
+            background-size: cover; /* Cover the entire area */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            background-attachment: fixed; /* Make the background image fixed */
+            background-position: center;
+        }
+        .header {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .footer {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .container {
+            max-width: 400px;
+            margin: 120px auto 50px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333333;
+            margin-bottom: 30px;
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+        form {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555555;
+            font-weight: bold;
+        }
+        input[type="email"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin: 10px 0 20px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: #ff0000;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #555555;
+            font-size: 14px;
+        }
+        .signup-link a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .signup-link a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>LOGIN TO PROCEED</h1>
+    </div>
+    
+    <div class="container">
+        <h2>Login</h2>
+        <form action="/login" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            <label for="phone_no">Password:</label>
+            <input type="password" id="phone_no" name="phone_no" required><br>
+            <input type="submit" value="Login">
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+        </form>
+        <div class="signup-link">
+            Don't have an account? <a href="/register">Sign up</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; Final Year Project / BNMIT,Bengaluru.</p>
+    </div>
+</body>
+</html>
